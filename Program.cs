@@ -54,7 +54,7 @@
 }
 
 // здесь располагаем методы для выполнения задач
-int ReadInt(string arg)
+int ReadInteger(string arg)
 {
 	Console.Write($"Введите {arg}: ");
 	int num;
@@ -67,12 +67,12 @@ int ReadInt(string arg)
 	return num;
 }
 
-void PrintFromNToOneRecursion(int n)
+void PrintRecursion(int n)
 {
 	if (n > 0)
 	{
 		Console.Write($"{n} ");
-		PrintFromNToOneRecursion(--n);
+		PrintRecursion(--n);
 	}
 }
 
@@ -82,17 +82,17 @@ bool CheckPositive(int n)
 	else return false;
 }
 
-int CalculateSumOfNaturalFromMToNRecursion(int m, int n)
+int CalculateSum(int m, int n)
 {
 	if (m > 0)
 	{
-		return m + CalculateSumOfNaturalFromMToNRecursion(m - 1, n);
+		return m + CalculateSum(m - 1, n);
 	}
 
 	return 0;
 }
 
-bool CheckNumbers(int m, int n)
+bool CheckNumber(int m, int n)
 {
 	if (m < 1 || n < 1)
 	{
@@ -102,7 +102,7 @@ bool CheckNumbers(int m, int n)
 	return true;
 }
 
-int CalculateAckermanRecursion(int m, int n)
+int CalculateAkerman(int m, int n)
 {
 	if (m == 0)
 	{
@@ -110,11 +110,11 @@ int CalculateAckermanRecursion(int m, int n)
 	}
 	else if (m > 0 && n == 0)
 	{
-		return CalculateAckermanRecursion(m - 1, 1);
+		return CalculateAkerman(m - 1, 1);
 	}
 	else if (m > 0 && n > 0)
 	{
-		return CalculateAckermanRecursion(m - 1, CalculateAckermanRecursion(m, n - 1));
+		return CalculateAkerman(m - 1, CalculateAkerman(m, n - 1));
 	}
 
 	return 0;
@@ -123,11 +123,11 @@ int CalculateAckermanRecursion(int m, int n)
 void Task_1()
 {
 	// Здесь вызываем необходимые методы для выполнения 1-й задачи
-	int n = ReadInt("число N");
+	int n = ReadInteger("число N");
 
 	if (CheckPositive(n))
 	{
-		PrintFromNToOneRecursion(n);
+		PrintRecursion(n);
 		Console.WriteLine();
 	}
 	else
@@ -139,24 +139,24 @@ void Task_1()
 void Task_2()
 {
 	// Здесь вызываем необходимые методы для выполнения 2-й задачи
-	int n1 = ReadInt("число М");
-	int n2 = ReadInt("число N");
+	int n1 = ReadInteger("число М");
+	int n2 = ReadInteger("число N");
 	int sum = 0;
 
 	if (n1 == n2)
 	{
 		Console.WriteLine("Числа равны");
 	}
-	else if (CheckNumbers(n1, n2))
+	else if (CheckNumber(n1, n2))
 	{
 		if (n1 > n2)
 		{
-			sum = CalculateSumOfNaturalFromMToNRecursion(n1, n2);
+			sum = CalculateSum(n1, n2);
 			Console.WriteLine($"Сумма всех элементов от {n1} до {n2} равна {sum}");
 		}
 		else if (n2 > n1)
 		{
-			sum = CalculateSumOfNaturalFromMToNRecursion(n2, n1);
+			sum = CalculateSum(n2, n1);
 			Console.WriteLine($"Сумма всех элементов от {n2} до {n1} равна {sum}");
 		}
 	}
@@ -165,9 +165,9 @@ void Task_2()
 void Task_3()
 {
 	// Здесь вызываем необходимые методы для выполнения 3-й задачи
-	int n1 = ReadInt("число М");
-	int n2 = ReadInt("число N");
-	int result = CalculateAckermanRecursion(n1, n2);
+	int n1 = ReadInteger("Введите число М");
+	int n2 = ReadInteger("Введите число N");
+	int result = CalculateAkerman(n1, n2);
 	Console.WriteLine($"A({n1}, {n2}) = {result}");
 }
 
