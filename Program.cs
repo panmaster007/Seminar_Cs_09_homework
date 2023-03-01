@@ -56,12 +56,12 @@
 // здесь располагаем методы для выполнения задач
 int ReadInteger(string arg)
 {
-	Console.Write($"Введите {arg}: ");
+	Console.Write($"{arg}: ");
 	int num;
 
 	while (!int.TryParse(Console.ReadLine(), out num))
 	{
-		Console.Write("Значение не подходит, повторите: ");
+		Console.Write("Error, repeat again: ");
 	}
 
 	return num;
@@ -76,17 +76,17 @@ void PrintRecursion(int n)
 	}
 }
 
-bool CheckPositive(int n)
+bool CheckPos(int n)
 {
 	if (n > 0) return true;
 	else return false;
 }
 
-int CalculateSum(int m, int n)
+int SumNamber(int m, int n)
 {
-	if (m > 0)
+	if (m > n - 1)
 	{
-		return m + CalculateSum(m - 1, n);
+		return m + SumNamber(m - 1, n);
 	}
 
 	return 0;
@@ -123,9 +123,9 @@ int CalculateAkerman(int m, int n)
 void Task_1()
 {
 	// Здесь вызываем необходимые методы для выполнения 1-й задачи
-	int n = ReadInteger("число N");
+	int n = ReadInteger("Введите число N");
 
-	if (CheckPositive(n))
+	if (CheckPos(n))
 	{
 		PrintRecursion(n);
 		Console.WriteLine();
@@ -139,25 +139,25 @@ void Task_1()
 void Task_2()
 {
 	// Здесь вызываем необходимые методы для выполнения 2-й задачи
-	int n1 = ReadInteger("число М");
-	int n2 = ReadInteger("число N");
+	int m = ReadInteger("Введите число М");
+	int n = ReadInteger("Введите число N");
 	int sum = 0;
 
-	if (n1 == n2)
+	if (m == n)
 	{
 		Console.WriteLine("Числа равны");
 	}
-	else if (CheckNumber(n1, n2))
+	else if (CheckNumber(m, n))
 	{
-		if (n1 > n2)
+		if (m > n)
 		{
-			sum = CalculateSum(n1, n2);
-			Console.WriteLine($"Сумма всех элементов от {n1} до {n2} равна {sum}");
+			sum = SumNamber(m, n);
+			Console.WriteLine($"Сумма элементов от {m} до {n} равна {sum}");
 		}
-		else if (n2 > n1)
+		else if (n > m)
 		{
-			sum = CalculateSum(n2, n1);
-			Console.WriteLine($"Сумма всех элементов от {n2} до {n1} равна {sum}");
+			sum = SumNamber(n, m);
+			Console.WriteLine($"Сумма элементов от {n} до {m} равна {sum}");
 		}
 	}
 }
@@ -165,10 +165,10 @@ void Task_2()
 void Task_3()
 {
 	// Здесь вызываем необходимые методы для выполнения 3-й задачи
-	int n1 = ReadInteger("Введите число М");
-	int n2 = ReadInteger("Введите число N");
-	int result = CalculateAkerman(n1, n2);
-	Console.WriteLine($"A({n1}, {n2}) = {result}");
+	int m = ReadInteger("Введите число М");
+	int n = ReadInteger("Введите число N");
+	int result = CalculateAkerman(m, n);
+	Console.WriteLine($"A({m}, {n}) = {result}");
 }
 
 TaskMenu();
