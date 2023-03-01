@@ -4,7 +4,7 @@
 
 	while (exitOut == true)
 	{
-		Console.WriteLine("Введите номер задачи(1, 2, либо q/Q для выхода):");
+		Console.WriteLine("Введите номер задачи(1, 2, 3 либо q/Q для выхода):");
 		string selectTask = "";
 		selectTask = Console.ReadLine();
 
@@ -24,6 +24,12 @@
 					break;
 				}
 
+			case "3":
+				{
+					Console.Clear();
+					Task_3();
+					break;
+				}
 			case "q":
 				{
 					exitOut = false;
@@ -59,4 +65,8 @@ void Task_2()
 	// Здесь вызываем необходимые методы для выполнения 2-й задачи
 }
 
+void Task_3()
+{
+	// Здесь вызываем необходимые методы для выполнения 3-й задачи
+}
 TaskMenu();
